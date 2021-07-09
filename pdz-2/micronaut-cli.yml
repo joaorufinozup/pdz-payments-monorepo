@@ -1,0 +1,7 @@
+applicationType: default
+defaultPackage: br.com.antoniooliveira
+testFramework: junit
+sourceLanguage: kotlin
+buildTool: gradle
+features: [app-name, jasync-sql, data, data-jpa, gradle, http-client, jdbc-hikari, junit, kotlin, kotlin-application, logback, netty-server, postgres, readme, shade, testcontainers, yaml]
+

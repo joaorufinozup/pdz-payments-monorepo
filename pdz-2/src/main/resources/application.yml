@@ -1,0 +1,30 @@
+micronaut:
+  application:
+    name: pdz2
+  server:
+    port: 8085
+datasources:
+  default:
+    jdbc-url: jdbc:postgresql://postgres:5432/subscriptions_db
+    username: 'admin'
+    password: '123'
+    driverClassName: org.postgresql.Driver
+
+jpa:
+  default:
+    packages-to-scan:
+      - 'br.com.antoniooliveira'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
+        show_sql: true
+flyway:
+  datasources:
+    default:
+      enabled: true
+
+endpoints:
+  flyway:
+    enabled: true
+    sensitive: true

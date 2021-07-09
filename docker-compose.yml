@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  customer:
+    build:
+      context: ./pdzCustomer
+    ports:
+      - '8081:8081'
+    depends_on:
+      - postgres-customer
+      - wallet
+  wallet:
+    build:
+      context: ./wallet
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres-wallet
+  postgres-wallet:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=wallet
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+  postgres-customer:
+    image: postgres
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_DB=customer
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+
+  # subscription:
+  #   build:
+  #     context: ./pdz-2
+  #   ports:
+  #     - '8082:8085'
+  #   depends_on:
+  #     - postgres
+  #     - payments
+  # payments:
+  #   build:
+  #     context: ./pdz-payments-project
+  #   ports:
+  #     - '8081:8080'
+  #   depends_on:
+  #     - db
+  # db:
+  #   image: mongo
+  #   restart: always
+  #   ports:
+  #     - 27017:27017
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: root
+  #     MONGO_INITDB_DATABASE: payments
+  # postgres:
+  #   image: "postgres:12.3"
+  #   environment:
+  #     POSTGRES_DB: "subscriptions_db"
+  #     POSTGRES_USER: "admin"
+  #     POSTGRES_PASSWORD: "123"
+  #   ports:
+  #     - 5432:5432

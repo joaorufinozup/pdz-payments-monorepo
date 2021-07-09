@@ -1,0 +1,30 @@
+POST http://localhost:8080/payment/ HTTP/1.1
+content-type: application/json
+
+{
+    "id_customer": "123",
+    "id_subscription": "123",
+    "value": 0.0
+}
+
+###
+
+GET http://localhost:8080/payment/6077aca747470a306289a456/
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/payment/6077aeef43ac6113dc3151ad/ HTTP/1.1
+content-type: application/json
+
+{
+    "id_customer": "123",
+    "id_subscription": "123",
+    "value": 0.0,
+    "status": 1
+}
+
+###
+
+DELETE http://localhost:8080/payment/6077aca747470a306289a456
+Content-Type: application/json
